@@ -20,7 +20,8 @@ else:
             is_digit_found = True
         elif char in {'!','@','#','$','%','^','&','*','(',')'}:
             is_symbol_found = True
-        if is_digit_found is True and is_symbol_found is True:
+        if is_digit_found and is_symbol_found:
+        	print('Password is valid')
             break
     if is_digit_found is False:
         print('Invalid password. Password should include a digit.')
