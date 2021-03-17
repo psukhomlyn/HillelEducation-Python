@@ -8,7 +8,7 @@ password validation rules:
 password: str = input('Enter password: ')
 
 is_digit_found = False
-is_symbol_found=False
+is_symbol_found = False
 
 if len(password) < 8:
     print('Invalid password. Password should be at least 8 characters.')
