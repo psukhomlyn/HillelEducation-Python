@@ -11,14 +11,16 @@ for value in {first_value, second_value}:
     first_value: int = int(first_value)
     second_value: int = int(second_value)
 
-if operation == '+':
+if operation == '/' and second_value == 0:
+    print('Division by 0 not possible')
+elif operation == '/':
+    print(first_value / second_value)
+elif operation == '+':
     print(first_value + second_value)
 elif operation == '-':
     print(first_value - second_value)
 elif operation == '*':
     print(first_value * second_value)
-elif operation == '/':
-    print(first_value / second_value)
 elif operation == '//':
     print(first_value // second_value)
 elif operation == 'sqr':
