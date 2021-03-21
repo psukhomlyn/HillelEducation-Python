@@ -1,34 +1,35 @@
-first_value: str = input('Input first value: ')
+first_value_str: str = input('Input first value: ')
 operation: str = input('Input math operation: ')
-second_value: str = input('Input second value: ')
+second_value_str: str = input('Input second value: ')
+# result: float
 
 try:
-    first_value: int = int(first_value)
-    second_value: int = int(second_value)
+    first_value_int: int = int(first_value_str)
+    second_value_int: int = int(second_value_str)
 except ValueError:
-    print (f'Both values should be a digits')
+    print(f'Both values should be a digits')
 else:
     if operation == '+':
-        print(first_value + second_value)
+        result = first_value_int + second_value_int
     elif operation == '-':
-        print(first_value - second_value)
+        result = first_value_int - second_value_int
     elif operation == '*':
-        print(first_value * second_value)
+        result = first_value_int * second_value_int
     elif operation == '/':
         try:
-            result1 = first_value / second_value
+            result = first_value_int / second_value_int
         except ZeroDivisionError:
             print('Division by 0 not possible')
-        else:
-            print(result1)
     elif operation == '//':
         try:
-            result2 = first_value // second_value
+            result = first_value_int // second_value_int
         except ZeroDivisionError:
             print('Division by 0 not possible')
-        else:
-            print(result2)
     elif operation == '**':
-        print(first_value * first_value)
+        result =  first_value_int * first_value_int
     else:
         print(f'Invalid operation: {operation}')
+try:
+    print(result)
+except NameError:
+    print(f'Not possible to get result')
