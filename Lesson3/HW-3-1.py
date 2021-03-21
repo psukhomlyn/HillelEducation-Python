@@ -1,7 +1,7 @@
 first_value_str: str = input('Input first value: ')
 operation: str = input('Input math operation: ')
 second_value_str: str = input('Input second value: ')
-# result: float
+result = None
 
 try:
     first_value_int: int = int(first_value_str)
@@ -29,7 +29,10 @@ else:
         result =  first_value_int * first_value_int
     else:
         print(f'Invalid operation: {operation}')
-try:
+if result != None:
     print(result)
-except NameError:
-    print(f'Not possible to get result')
+
+# try:
+#     print(result)
+# except NameError:
+#     print(f'Not possible to get result')
