@@ -26,7 +26,7 @@ else:
         except ZeroDivisionError:
             print('Division by 0 not possible')
     elif operation == '**':
-        result =  first_value_int * first_value_int
+        result = first_value_int * first_value_int
     else:
         print(f'Invalid operation: {operation}')
 if result:
