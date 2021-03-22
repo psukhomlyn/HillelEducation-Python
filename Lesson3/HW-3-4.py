@@ -1,4 +1,6 @@
-# Task 4
+"""
+Task 4
+"""
 
 first_value_str: str = input('Input first value: ')
 second_value_str: str = input('Input second value: ')
@@ -18,7 +20,9 @@ else:
             my_list.append(item)
     print(f'Your list is {my_list}')
 
-# Task 5
+"""
+Task 5
+"""
 total_value = 0
 
 for i in my_list:
