@@ -8,31 +8,32 @@ is_digit_found = False
 is_symbol_found = False
 
 # Email validation
+
 if '@' not in email:
-    raise NameError('Email should include @')
+    raise NameError(f'Email should include @')
     # print('Invalid email')
     # sys.exit(0)
 elif '.' not in email:
-    raise NameError('Email domain should include a dot')
+    raise NameError(f'Email domain should include a dot')
     # print('Invalid email')
     # sys.exit(0)
 at_sign_index = email.index('@')
 for sign in {'.', '@'}:
     if email[at_sign_index + 1] == sign or email[at_sign_index - 1] == sign:
-        raise NameError('Invalid email.')
+        raise NameError(f'Invalid email.')
         # print('Invalid email')
         # sys.exit(0)
     elif email[-1] == sign or email[0] == sign:
-        raise NameError('Invalid email.')
+        raise NameError(f'Invalid email.')
         # print('Invalid')
         # sys.exit(0)
 
 # Password validation
 
 if len(password) < 8:
-    raise NameError('Invalid password. Password should be at least 8 characters.')
+    raise NameError(f'Invalid password. Password should be at least 8 characters.')
 if ' ' in password:
-    raise NameError('Invalid password. Password cannot include spaces.')
+    raise NameError(f'Invalid password. Password cannot include spaces.')
 
 for char in password:
     if char in string.digits:
@@ -40,7 +41,7 @@ for char in password:
     elif char in {'!', '@', '#', '$', '%', '^', '&', '*', '(', ')'}:
         is_symbol_found = True
     if is_digit_found and is_symbol_found:
-        print('Password is valid')
+        print(f'Password is valid')
         break
 
 if not is_digit_found:
