@@ -29,10 +29,10 @@ else:
         result =  first_value_int * first_value_int
     else:
         print(f'Invalid operation: {operation}')
-if result != None:
+if result:
     print(result)
 
 # try:
 #     print(result)
 # except NameError:
-#     print(f'Not possible to get result')
+#     print(f'Not possible to get result')      # in case if result variable do not set in the row 4
