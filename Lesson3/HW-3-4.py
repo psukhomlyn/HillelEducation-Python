@@ -11,9 +11,9 @@ try:
 except ValueError:
     print(f'Both values should be a digits')
 if second_value_int <= first_value_int:
-    raise NameError(f'Second value cannot be less then the first value')
+    raise NameError(f'Second value should be bigger then the first value')
 else:
-    for item in range(first_value_int, second_value_int, 1):
+    for item in range(first_value_int, second_value_int):
         if item % 5 == 0:
             my_list.append(item)
     print(f'Your list is {my_list}')
