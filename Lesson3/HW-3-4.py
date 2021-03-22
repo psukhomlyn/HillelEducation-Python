@@ -19,13 +19,11 @@ else:
     print(f'Your list is {my_list}')
 
 # Task 5
-min_value = min(my_list)
-max_value = max(my_list)
 total_value = 0
 
 for i in my_list:
     total_value = total_value + i
 
-print(f'Min value is {min_value}')
-print(f'Max value is {max_value}')
+print(f'Min value is {min(my_list)}')
+print(f'Max value is {max(my_list)}')
 print(f'Total value is {total_value}')
