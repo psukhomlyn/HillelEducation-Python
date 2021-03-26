@@ -1,4 +1,4 @@
-from datetime import timedelta, date
+from datetime import timedelta
 import datetime
 
 entered_year: str = input('Please enter a year: ')
@@ -10,13 +10,14 @@ if not entered_year.isdigit():
 year = int(entered_year)
 year_day = datetime.date(year, 1, 1)
 
-while year_day.weekday() != 0:
-    year_day += datetime.timedelta(days=1)
+while year_day.weekday() != 0:  # for find 1st Monday in the year
+    year_day += timedelta(days=1)
 
-print(f'The first Monday in the year is {year_day}')
+print(f'The first Monday in the {entered_year} is {year_day}')
 
-while year_day.year == year:
-    year_day += datetime.timedelta(days=7)
-    monday_list.append(year_day)
+monday_list.append(year_day)
 
-print(monday_list)
+while year_day.year == year:  # for add all next Mondays in the year
+    year_day += timedelta(weeks=1)
+    if year_day.year == year:  # without this if the 1st Monday of next year will be included
+        print(f'Next Monday in the {entered_year} is {year_day}')
