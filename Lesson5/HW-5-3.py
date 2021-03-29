@@ -1,5 +1,5 @@
 """
-Original text in test file - The long word in the text. Thelongestword in the text. text.
+Original text in test file - The long word in the text. text. Thelongestword in the text.
 """
 from collections import Counter
 
