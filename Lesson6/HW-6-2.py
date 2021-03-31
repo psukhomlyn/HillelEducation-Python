@@ -1,6 +1,5 @@
 number: str = input('Please enter a number: ')
 
-
 if not number.isdigit():
     raise ValueError('Entered value should be a number')
 
