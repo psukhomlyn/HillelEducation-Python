@@ -11,3 +11,6 @@ def even_odd_number(num):
         return True
     else:
         return False
+
+
+print(even_odd_number(number))
