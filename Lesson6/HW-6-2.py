@@ -7,10 +7,10 @@ number: int = int(number)
 
 
 def even_odd_number(num):
-    if num % 2 == 0:
-        return True
-    else:
-        return False
+    return num % 2 == 0
 
 
-print(even_odd_number(number))
+if even_odd_number(number):
+    print(f'Number {number} is even')
+else:
+    print(f'Number {number} is odd')
