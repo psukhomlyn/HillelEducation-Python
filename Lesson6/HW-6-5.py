@@ -2,12 +2,7 @@ import json
 from pprint import pprint
 
 FILE_CONTENT = None
-answer1 = input('What is your name? ')
-answer2 = input('How old are you? ')
-answer3 = input('Do you like python? ')
-answer4 = input('What is the most difficult topic for you? ')
-answer5 = input('Please write suggestions and wishes ')
-
+answers_list = []
 
 def read_file(filename):
     global FILE_CONTENT
@@ -16,27 +11,40 @@ def read_file(filename):
 
 
 read_file('questions.json')
-pprint(FILE_CONTENT, indent=4)
-print(type(FILE_CONTENT))
+# pprint(FILE_CONTENT, indent=4)
+# print(type(FILE_CONTENT))
 
-# value = FILE_CONTENT['questions']
-# print(value)
-# print(type(value))
+questions = FILE_CONTENT['questions']  #json dict value
+# print(questions)
+# print(type(questions))
+#
+# print(questions[0])
+# print(type(questions[0]))
 
 
+# question = questions[0]['q']
+
+for q_element in questions:
+    question = q_element['q']
+    answer = input(f'{question} ')
+    answers_list.append(answer)
+# print(answers_list)
+
+"""
+Put answers to json
+"""
 def put_answers():
     global FILE_CONTENT
-    FILE_CONTENT['questions'][0]['answer'] = answer1
-    FILE_CONTENT['questions'][1]['answer'] = answer2
-    FILE_CONTENT['questions'][2]['answer'] = answer3
-    FILE_CONTENT['questions'][3]['answer'] = answer4
-    FILE_CONTENT['questions'][4]['answer'] = answer5
-
+    for a_element in answers_list:
+        print(a_element, type(a_element))
+        FILE_CONTENT['questions'][a_element]['answer'] = answers_list[a_element]
 
 put_answers()
 pprint(FILE_CONTENT, indent=4)
 
-
+"""
+Write answers to json
+"""
 # def save_answers(filename):
 #     global FILE_CONTENT
 #     with open(filename, 'w') as file:
