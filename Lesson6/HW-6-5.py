@@ -6,6 +6,7 @@ with open('questions.json') as file:
 
 pprint(file_data, indent=4)
 
+print(file_data['q'])
 """
 convert dict to json
 file_data = json.dumps(file_data)

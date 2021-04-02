@@ -4,7 +4,7 @@ str = input('Please enter a string: ')
 def string_transform(item):
     transform_value = 0
     transform_list = []
-    for char in (item):
+    for char in item:
         if char == 'i':
             transform_value += 1
         elif char == 'd':
