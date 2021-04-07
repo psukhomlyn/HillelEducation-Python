@@ -30,8 +30,8 @@ def main():
             player_1_sum += player_1_value
             player_2_sum += player_2_value
 
-            print(player_1_value)
-            print(player_2_value)
+            print(f'First player result in {11-counter} round is {player_1_value}')
+            print(f'Second player result in {11 - counter} round is {player_2_value}')
 
             counter -= 1
 
