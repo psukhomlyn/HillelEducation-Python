@@ -25,6 +25,8 @@ FILE_CONTENT['questions'] = questions
 """
 Write answers to json
 """
+
+
 def save_answers(filename):
     global FILE_CONTENT
     with open(filename, 'w') as file:
