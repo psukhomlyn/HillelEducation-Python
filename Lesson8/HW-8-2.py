@@ -28,7 +28,7 @@ def main():
         if not counter.isdigit():
             raise TypeError('Number of rounds should be a digit')
         counter = int(counter)
-        round_num = 1
+        round_num = 1  # for display game round number
         while counter:
             print(f'{round_num} round')
             player_1_value = first_player()
