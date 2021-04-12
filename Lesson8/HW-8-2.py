@@ -5,7 +5,7 @@
 """
 import random
 from datetime import datetime
-import csv
+import json
 
 first_player_name = input('Enter 1st player name: ')
 second_player_name = input('Enter 2nd player name: ')
@@ -13,12 +13,12 @@ second_player_name = input('Enter 2nd player name: ')
 
 def first_player():
     input(f'{first_player_name} move ')
-    return random.randint(1, 6)
+    return random.randint(1, 6), datetime.now().strftime("%H:%M:%S")
 
 
 def second_player():
     input(f'{second_player_name} move')
-    return random.randint(1, 6)
+    return random.randint(1, 6), datetime.now().strftime("%H:%M:%S")
 
 
 def main():
@@ -27,13 +27,11 @@ def main():
     player_2_sum = 0
     if start == 'yes':
 
-        round_num = 1  # for display game round number
+        game_data = {}
+        game_total = {}
+        game_winner = None
 
-        # with open('game.csv', 'w') as csv_game_file:
-        #     writer = csv.writer(csv_game_file)
-        #     writer.writerow(headers)
-        #     for r in range(round_num):
-        #         row = ()
+        round_num = 1  # for display game round number
 
         counter = input('How many rounds game do you want play? ')
 
@@ -42,10 +40,10 @@ def main():
         counter = int(counter)
         while counter:
             print(f'{round_num} round')
-            player_1_value = first_player()
+            player_1_value, first_player_move_time = first_player()
             move_time = datetime.now().strftime("%H:%M:%S")
             print(f'{first_player_name} move time is {move_time}')
-            player_2_value = second_player()
+            player_2_value, second_player_move_time = second_player()
             move_time = datetime.now().strftime("%H:%M:%S")
             print(f'{second_player_name} move time is {move_time}')
             if player_1_value == player_2_value:
@@ -68,23 +66,55 @@ def main():
             print(f'Current total result after {round_num} round is {player_1_sum} : {player_2_sum}')
 
             counter -= 1
+            # round_num += 1
+
+            game_data[f'Round {round_num}'] = {
+                'player_1': {
+                    'name': first_player_name,
+                    'round_sum': player_1_value,
+                    'time': first_player_move_time,
+                    'current_value' : player_1_sum
+                },
+                'player_2': {
+                    'name': second_player_name,
+                    'round_sum': player_2_value,
+                    'time': second_player_move_time,
+                    'current_value': player_2_sum
+                }
+            }
+
             round_num += 1
+
+        with open('game_result.json', 'w') as file:
+            json.dump(game_data, file)
+
 
         if player_1_sum > player_2_sum:
             print(f'{first_player_name} win game with total result {player_1_sum} : {player_2_sum}')
+            game_winner = first_player_name
             # print(player_1_sum)
             # print(player_2_sum)
             return
 
         if player_1_sum == player_2_sum:
             print(f'Draw with total result {player_1_sum} : {player_2_sum}')
+            game_winner = 'No winner'
             # print(player_1_sum)
             # print(player_2_sum)
             return
 
         print(f'{second_player_name} win game with total result {player_2_sum} : {player_1_sum}')
+        game_winner = second_player_name
         # print(player_1_sum)
         # print(player_2_sum)
+
+        game_total['Game result'] = {
+            'game winner': f'{game_winner}',
+            'total result': f'{player_1_sum} - {player_2_sum}'
+        }
+
+        with open('game_result.json', 'w') as file:
+            json.dump(game_total, file)
 
 
 main()
