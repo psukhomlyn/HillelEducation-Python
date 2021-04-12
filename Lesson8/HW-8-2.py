@@ -66,7 +66,6 @@ def main():
             print(f'Current total result after {round_num} round is {player_1_sum} : {player_2_sum}')
 
             counter -= 1
-            # round_num += 1
 
             game_data[f'Round {round_num}'] = {
                 'player_1': {
@@ -110,11 +109,13 @@ def main():
 
         game_total['Game result'] = {
             'game winner': f'{game_winner}',
-            'total result': f'{player_1_sum} - {player_2_sum}'
+            'total result': f'{player_1_sum} vs {player_2_sum}'
         }
 
-        with open('game_result.json', 'w') as file:
-            json.dump(game_total, file)
+        with open('game_result.json', 'a') as file:
+            game_data = json.load(file)
+            game_data.update(game_total)
+            json.dump(game_data, file)
 
 
 main()
