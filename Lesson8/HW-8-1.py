@@ -1,14 +1,14 @@
 num1 = input('Please input the first number: ')
 if not num1.isdigit():
-    raise TypeError (f' First value should be a digit')
+    raise TypeError (f'First value should be a digit')
 
 num2 = input('Please input the second number: ')
 if not num2.isdigit():
-    raise TypeError (f' Second value should be a digit')
+    raise TypeError (f'Second value should be a digit')
 
 num3 = input('Please input the third number: ')
 if not num3.isdigit():
-    raise TypeError (f' Third value should be a digit')
+    raise TypeError (f'Third value should be a digit')
 
 origin_list = [num1, num2, num3]
 # print(origin_list)
