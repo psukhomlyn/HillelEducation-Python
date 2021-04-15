@@ -85,7 +85,7 @@ def main():
             round_num += 1
 
         with open('game_result.json', 'w') as file:
-            json.dump(game_data, file)
+            json.dump(game_data, file, indent=4)
 
 
         if player_1_sum > player_2_sum:
@@ -115,7 +115,7 @@ def main():
         with open('game_result.json', 'a') as file:
             game_data = json.load(file)
             game_data.update(game_total)
-            json.dump(game_data, file)
+            json.dump(game_data, file, indent=4)
 
 
 main()
