@@ -30,7 +30,7 @@ def hack_archive(file_name):
     Функция брутфорсит запароленный архив
     """
     file_to_open = zipfile.ZipFile(file_name)  # объект архива
-    wrong_passwords = []  # список паролей, которые не подошли
+    wrong_passwords = [] # список паролей, которые не подошли
     tries = 0  # колличество неудачных попыток
 
     while True:
