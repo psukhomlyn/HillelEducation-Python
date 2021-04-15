@@ -59,6 +59,7 @@ def hack_archive(file_name):
         
     print(f'Archive {file_name} is hacked. Password - {password}')
     print(f'Password was found after {tries} tries')
+    print(f'Wrong passwords are: {wrong_passwords}')
 
 
 filename = 'task.zip'
