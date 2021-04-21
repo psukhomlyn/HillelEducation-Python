@@ -3,6 +3,7 @@
 методами подсчета площади и периметра. Методы должны возвращать (return) значение, а не принтить (это важно)
 """
 
+
 class Figure:
 
     def perimeter(self):
@@ -14,39 +15,36 @@ class Figure:
 
 class Triangle(Figure):
     def __init__(self, side_a, side_b, side_c):
-        assert isinstance(side_a, int), 'Переменная должна быть типа int'
-        assert isinstance(side_b, int), 'Переменная должна быть типа int'
-        assert isinstance(side_c, int), 'Переменная должна быть типа int'
-        self._validate_trinangle(side_a, side_b, side_c)
+        assert isinstance(side_a, int), 'Triangle side should be integer'
+        assert isinstance(side_b, int), 'Triangle side should be integer'
+        assert isinstance(side_c, int), 'Triangle side should be integer'
+        # self.validate_triangle(side_a, side_b, side_c)
         self.side_a = side_a
         self.side_b = side_b
         self.side_c = side_c
 
-    def _validate_trinangle(self, side_a, side_b, side_c):
-        # add some validation
-        # raise some error if not valid
-        pass
+    def validate_triangle(self):
+        sides = [self.side_a, self.side_b, self.side_c]
+        sorted_sides = sorted(sides)
+        if sorted_sides[0] + sorted_sides[1] < sorted_sides[-1]:
+            raise ValueError
+        else:
+            print('Triangle is valid')
 
     def perimeter(self):
         return self.side_a + self.side_b + self.side_c
 
     def square(self):
-        per = self.perimeter() / 2
-        return (per * (per - self.side_a) * (per - self.side_b) * (per - self.side_c)) ** 0.5
+        semi_per = self.perimeter() / 2
+        return (semi_per * (semi_per - self.side_a) * (semi_per - self.side_b) * (semi_per - self.side_c)) ** (1/2)
 
 
 class Rectangle(Figure):
     def __init__(self, side_a, side_b):
-        assert isinstance(side_a, int), 'Переменная должна быть типа int'
-        assert isinstance(side_b, int), 'Переменная должна быть типа int'
-        self._validate_rectangle(side_a, side_b)
+        assert isinstance(side_a, int), 'Rectangle side should be integer'
+        assert isinstance(side_b, int), 'Rectangle side should be integer'
         self.side_a = side_a
         self.side_b = side_b
-
-    def _validate_rectangle(self, side_a, side_b):
-        # add some validation
-        # raise some error if not valid
-        pass
 
     def perimeter(self):
         return (self.side_a + self.side_b) * 2
@@ -57,7 +55,7 @@ class Rectangle(Figure):
 
 class Square(Figure):
     def __init__(self, side_a):
-        assert isinstance(side_a, int), 'Переменная должна быть типа int'
+        assert isinstance(side_a, int), 'Square side should be integer'
         self.side_a = side_a
 
     def perimeter(self):
@@ -65,3 +63,63 @@ class Square(Figure):
 
     def square(self):
         return self.side_a ** 2
+
+
+def triangle_calc(side_a, side_b, side_c):
+    tri = Triangle(side_a, side_b, side_c)
+    tri.validate_triangle()
+    tri.perimeter()
+    print(f'Triangle perimeter is {tri.perimeter()}')
+    tri.square()
+    print(f'Triangle square is {tri.square()}')
+
+
+# triangle_calc(4,7,10)
+
+
+def rectangle_calc(side_a, side_b):
+    rec = Rectangle(side_a, side_b)
+    print(f'Rectangle perimeter is {rec.perimeter()}')
+    print(f'Rectangle square is {rec.square()}')
+
+
+# rectangle_calc(4,7)
+
+
+def square_calc(side_a):
+    sq = Square(side_a)
+    print(f'Square perimeter is {sq.perimeter()}')
+    print(f'Square square is {sq.square()}')
+
+# square_calc(5)
+
+
+def input_figure():
+    fig = input('Please select a figure: triangle / rectangle / square ')
+    if fig == "triangle":
+        side_a = input('Please enter triangle 1st side ')
+        side_b = input('Please enter triangle 2nd side ')
+        side_c = input('Please enter triangle 3rd side ')
+        side_a = int(side_a)
+        side_b = int(side_b)
+        side_c = int(side_c)
+        triangle_calc(side_a, side_b, side_c)
+    elif fig == "rectangle":
+        side_a = input('Please enter rectangle 1st side ')
+        side_b = input('Please enter rectangle 2nd side ')
+        side_a = int(side_a)
+        side_b = int(side_b)
+        rectangle_calc(side_a, side_b)
+    elif fig == "square":
+        side_a = input('Please enter square side ')
+        side_a = int(side_a)
+        square_calc(side_a)
+    else:
+        print('Please enter a valid figure')
+
+
+input_figure()
+
+
+
+
