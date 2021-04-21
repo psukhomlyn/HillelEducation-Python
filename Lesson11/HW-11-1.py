@@ -18,10 +18,10 @@ class Triangle(Figure):
         assert isinstance(side_a, int), 'Triangle side should be integer'
         assert isinstance(side_b, int), 'Triangle side should be integer'
         assert isinstance(side_c, int), 'Triangle side should be integer'
-        # self.validate_triangle(side_a, side_b, side_c)
         self.side_a = side_a
         self.side_b = side_b
         self.side_c = side_c
+        self.validate_triangle()
 
     def validate_triangle(self):
         sides = [self.side_a, self.side_b, self.side_c]
@@ -100,22 +100,16 @@ def input_figure():
         side_a = input('Please enter triangle 1st side ')
         side_b = input('Please enter triangle 2nd side ')
         side_c = input('Please enter triangle 3rd side ')
-        side_a = int(side_a)
-        side_b = int(side_b)
-        side_c = int(side_c)
-        triangle_calc(side_a, side_b, side_c)
+        triangle_calc(int(side_a), int(side_b), int(side_c))
     elif fig == "rectangle":
         side_a = input('Please enter rectangle 1st side ')
         side_b = input('Please enter rectangle 2nd side ')
-        side_a = int(side_a)
-        side_b = int(side_b)
-        rectangle_calc(side_a, side_b)
+        rectangle_calc(int(side_a), int(side_b))
     elif fig == "square":
         side_a = input('Please enter square side ')
-        side_a = int(side_a)
-        square_calc(side_a)
+        square_calc(int(side_a))
     else:
-        print('Please enter a valid figure')
+        print(f'{fig} figure is not valid.')
 
 
 input_figure()
