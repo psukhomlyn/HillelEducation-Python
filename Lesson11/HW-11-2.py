@@ -6,37 +6,29 @@
     2.def is_known(self, another_person_object)
     который возвращает знакомы ли два человека (True/False)
 """
-import uuid
-
 class Person:
-    def __init__(self, age, name, _id):
+    def __init__(self, age, name):
         self.name = name
         self.age = age
-        self._id = _id
-        self.__friends = {}
+        self.__friends = []
 
     def know(self, other):
-        self.__friends.setdefault(other._id, other)
+        self.__friends.append(other)
 
     def is_known(self, other):
-        return other._id in self.__friends
+        return other in self.__friends
 
     @property
     def friends(self):
-        return list(self.__friends.values())
+        return self.__friends
 
 
-person1 = Person(18, 'Oleg', _id=uuid.uuid4())
-person2 = Person(20, 'Ivan', _id=uuid.uuid4())
-person3 = Person(20, 'Ivan', _id=uuid.uuid4())
+person1 = Person(28, 'Dima')
+person2 = Person(32, 'Vasya')
 
 print(person1.is_known(person2))
 
 person1.know(person2)
-person1.know(person2)
-person1.know(person2)
-person1.know(person2)
-person1.know(person2)
-person1.know(person3)
+
 print(person1.is_known(person2))
 print(person1.friends)
