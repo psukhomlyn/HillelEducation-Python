@@ -6,6 +6,8 @@
     2.def is_known(self, another_person_object)
     который возвращает знакомы ли два человека (True/False)
 """
+
+
 class Person:
     def __init__(self, age, name):
         self.name = name
