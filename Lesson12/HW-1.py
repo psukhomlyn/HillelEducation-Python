@@ -38,8 +38,8 @@ class Student:
     def avg_rate(self):
         return sum(self.grades.values()) / len(self.grades)
 
-    def change_grade(self):
-        self.grades = self.grades.update[science]
+    # def change_grade(self):
+    #     self.grades = self.grades.update["math"]
 
 
 class Group:
@@ -60,29 +60,23 @@ class Group:
         student.group = None
 
 
-def chek_its_ok():
-    new_group = Group(name='new_group')
-    other_group = Group(name='other_group')
-    oleg = Student(name='Oleg', age=21, grades={'math': 4, 'bio': 4, 'history': 5}, group=new_group)
-    andrey = Student(name='Andrey', age=22, grades={'math': 5, 'bio': 3, 'history': 5}, group=new_group)
-    print(oleg.name, oleg._id, oleg.avg_rate)
-    print(andrey.name, andrey._id, andrey.avg_rate)
-    new_group.add_student(andrey)
-    new_group.add_student(oleg)
-    new_group.add_student(oleg)
-    print(new_group.students)
-    print(new_group.avg_rate)
-    print(oleg.name, oleg.group.name)
-    print(andrey.name, andrey.group.name)
-    oleg.change_group(other_group)
-    print(oleg.name, oleg.group.name)
-    print(other_group.students)
-    print(new_group.students)
-    print(andrey.name, andrey.group.name)
-    new_group.delete_student(andrey)
-    print(new_group.students)
-    # print(andrey.name, andrey.group.name)
-    new_group.delete_student(oleg)
+def code_check():
+    first_group = Group(name='1st Group')
+    second_group = Group(name='2nd Group')
+    oleg = Student(name='Oleg', age=21, grades={'math': 5, 'bio': 4, 'history': 5}, group=first_group)
+    viktor = Student(name='Viktor', age=23, grades={'math': 5, 'bio': 3, 'history': 3}, group=first_group)
+    # oleg.change_grade()
+    # print(oleg.name, oleg.grades)
+    print(oleg.name, oleg.group, oleg.avg_rate)  # принт студента 1
+    print(viktor.name, viktor.group, viktor.avg_rate)  # принт студента 2
+    first_group.add_student(oleg)  # добавление студента 1 в группу 1
+    print(first_group.students, first_group.avg_rate)  # оценки студента и группы равны
+    first_group.add_student(viktor)  # добавление студента 2 в группу 1
+    print(first_group.students, first_group.avg_rate)  # оценка группы изменилась
+    oleg.change_group(second_group) # студент 1 перешел в группу 2
+    print(oleg.name, oleg.group.name, oleg.avg_rate)
+    print(second_group.students, second_group.avg_rate)
+    print(first_group.students, first_group.avg_rate)
+    print(viktor.name, viktor.group.name)
 
-
-chek_its_ok()
+code_check()
