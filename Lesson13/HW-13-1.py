@@ -43,7 +43,7 @@ class Warrior:
 
     def heat_other(self, other_warrior):
         if other_warrior.status == 'die':
-            print(other_warrior.name + 'is die')
+            print(other_warrior.name + ' is die')
             raise Exception
         if other_warrior.armor:
             predict = other_warrior.armor - self.weapon.power
@@ -70,25 +70,22 @@ def random_choose_weapon():
     return choice(weapon_list)
 
 
-def main_fighting_area():
-    samuray = Warrior(name='Oleg', health=100, weapon=random_choose_weapon())
+def fight():
+    samurai = Warrior(name='Hikaru', health=100, weapon=random_choose_weapon())
     viking = Warrior(name='Olof', health=100, weapon=random_choose_weapon())
     while True:
-        print(samuray.weapon.power, 'samuray')
-        print(viking.weapon.power, 'viking')
-        print(viking.health)
-        print(viking.armor)
-        print(samuray.health, 'samuray')
-        print(samuray.armor, 'samuray')
-        samuray.heat_other(viking)
-        print('after')
-        print(viking.health)
-        print(viking.armor)
-        samuray.heat_other(viking)
-        print('after')
-        print(viking.health)
-        print(viking.armor)
-        viking.heat_other(samuray)
-        print('after  samuray')
-        print(samuray.health)
-        print(samuray.armor)
+        print(f'Samurai {samurai.name} has: heath - {samurai.health}, weapon power - {samurai.weapon.power}, armor - {samurai.armor}')
+        print(f'Viking {viking.name} has: heath - {viking.health}, weapon power - {viking.weapon.power}, armor - {viking.armor}')
+        samurai.heat_other(viking)
+        print(f'Samurai damage {samurai.weapon.power}')
+        print(f'After samuray {samurai.name} beat viking {viking.name}')
+        print(f'Samurai {samurai.name} has: heath - {samurai.health}, weapon power - {samurai.weapon.power}, armor - {samurai.armor}')
+        print(f'Viking {viking.name} has: heath - {viking.health}, weapon power - {viking.weapon.power}, armor - {viking.armor}')
+        viking.heat_other(samurai)
+        print(f'Viking damage {viking.weapon.power}')
+        print(f'After viking {viking.name} beat samuray {samurai.name}')
+        # print(f'Samuray {samuray.name} has: heath - {samuray.health}, weapon power - {samuray.weapon.power}, armor - {samuray.armor}')
+        # print(f'Viking {viking.name} has: heath - {viking.health}, weapon power - {viking.weapon.power}, armor - {viking.armor}')
+
+
+fight()
